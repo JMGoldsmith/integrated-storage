@@ -1,9 +1,3 @@
-# =======================================================================
-# Vault Splunk Stack - quick 'n easy Vault + Telegraf + Splunk
-#
-# You take some Vault and some Splunk...
-# =======================================================================
-
 terraform {
   required_version = ">= 0.13"
 }

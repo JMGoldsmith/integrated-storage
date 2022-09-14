@@ -1,3 +1,4 @@
-/config/vault.hclic
-.terraform
 tfstate/
+config/vault.hclic
+.terraform.lock.hcl
+notes

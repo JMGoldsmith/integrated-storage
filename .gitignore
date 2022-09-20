@@ -1,7 +1,7 @@
-tfstate/
+tfstate/*
 config/vault.hclic
 .terraform.lock.hcl
 notes
-vault/vault.tmp
+vault/*
 raft/
 logs/

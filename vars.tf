@@ -7,5 +7,5 @@ variable "vault_license" {
 }
 
 variable "vault_version" {
-  default = "1.10.3-ent"
+  default = "1.8.6-ent"
 }

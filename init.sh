@@ -1,30 +1,26 @@
 #!/bin/bash
-
+export VAULT_ADDR="http://127.0.0.1:8200"
 terraform apply -auto-approve
 
 vault operator init -key-shares=1 -key-threshold=1 > vault/vault.tmp
 
-# while : ; do
-#     [[ -f "vault/vault.tmp" ]] && break
-#     echo "Pausing until file exists."
-#     sleep 1
-# done
+while : ; do
+    [[ -f "vault/vault.tmp" ]] && break
+    echo "Pausing until file exists."
+    sleep 1
+done
 
-# ## Get key and unseal
-# KEY=$(grep "Unseal Key" vault/vault.tmp)
-# IFS=":" read name key_value <<< $KEY
-# key_value="${key_value:1}"
-# echo $key_value
+## Get key and unseal
+KEY=$(grep "Unseal Key" vault/vault.tmp)
+key_value=$(cut -d':' -f2 <<< $KEY) 
+vault operator unseal $key_value
 
-# vault operator unseal $key_value
 
-# ## Get token and log in
-# TOKEN=$(grep "Initial Root Token" vault/vault.tmp)
-# IFS=":" read name token_value <<< $TOKEN
-# token_value="${token_value:1}"
-# echo $token_value
-
-# vault login $token_value
+## Get token and log in
+TOKEN=$(grep "Initial Root Token" vault/vault.tmp)
+token_value=$(cut -d':' -f2 <<< $TOKEN)
+echo $token_value
+vault login $token_value
 
 ## join other nodes.
 

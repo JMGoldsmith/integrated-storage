@@ -1,6 +1,6 @@
-# Single vault node for replication purposes.
+# Vault cluster with integrated storage for replication purposes.
 
-This single node is intended to be used as a building block for other replication environments.
+This cluster is intended to be used as a building block for other replication environments.
 
 To run this as vault enterprise, add your vault.hclic file to the config directory.
 

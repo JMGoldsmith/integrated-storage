@@ -9,10 +9,6 @@ license_path = "/vault/config/vault.hclic"
 storage "raft" {
   path    = "/var/raft/"
   node_id = ${node_id}
-
-  retry_join {
-    leader_api_addr = "http://10.42.10.200:8200"
-  }
 }
 
 listener "tcp" {

@@ -24,6 +24,18 @@ vault login $token_value
 
 ## join other nodes.
 
+export VAULT_ADDR="http://127.0.0.1:8210"
+vault operator raft join "http://10.42.10.200:8200"
+sleep 10
+vault operator unseal $key_value
+
+export VAULT_ADDR="http://127.0.0.1:8220"
+vault operator raft join "http://10.42.10.200:8200"
+sleep 10
+vault operator unseal $key_value
+
+sleep 10
+vault operator raft list-peers
 ### Make array based on number of nodes(get from query or input?)
 ### Take out existing leader node ID
 ### Join others based on remaining items in array.
